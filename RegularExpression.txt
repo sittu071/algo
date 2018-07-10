@@ -1,0 +1,20 @@
+1) ^->all character which start with specific symbol
+for an example ^220 it will print all the line which start with 220.
+
+2)* -> after all 
+for an example ^220*:- lines start with 220 and print complete line after it 
+
+3) ? -> The question mark character, ?, matches either once or zero times; you can think of it as marking something as being optional. For example, home-?brew matches either homebrew or home-brew.
+
+4) $ -> Matches at the end of a line, which is defined as either the end of the string, or any location followed by a newline character
+
+5)| -> |
+Alternation, or the “or” operator. If A and B are regular expressions, A|B will match any string that matches either A or B. | has very low precedence in order to make it work reasonably when you’re alternating multi-character strings. Crow|Servo will match either Crow or Servo, not Cro, a 'w' or an 'S', and ervo.
+
+6) . -> A period (.) matches any character except a newline character.
+
+7) + -> A regular expression followed by a plus sign (+) matches one or more occurrences of the one-character regular expression. If there is any choice, the first matching string in a line is used.
+
+8) \number
+
+Matches the contents of the group of the same number. Groups are numbered starting from 1. For example, (.+) \1 matches 'the the' or  '55 55', but not 'thethe' (note the space after the group). This special sequence can only be used to match one of the first 99 groups. If the first digit of number is 0, or number is 3 octal digits long, it will not be interpreted as a group match, but as the character with octal value number. Inside the '[' and ']' of a character class, all numeric escapes are treated as characters.
