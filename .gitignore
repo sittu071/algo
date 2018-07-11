@@ -6,3 +6,5 @@ CreateDirectory&subdirectory.py
 CreateFileset3&Fileset4.py
 CreateUser.txt
 users.cfg
+options.py
+setup.py
