@@ -1,0 +1,11 @@
+1) Pip is a tool which is used to install packages in python
+2) pip --version is used to check version
+3) Installing from PyPI
+	The most common usage of pip is to install from the Python Package Index 
+	using a requirement specifier. Generally speaking, a requirement specifier 
+	is composed of a project name followed by an optional version specifier. 
+	PEP 440 contains a full specification of the currently supported specifiers. 
+	Below are some examples.
+4) how to insatll any module
+   for example installing steps of "matplotlib"
+   execute this command ---------- python -mpip install matplotlib
