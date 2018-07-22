@@ -52,11 +52,10 @@ def cleanup(): #delete the exsiting file if any
 
 
 def mainmethod():
-
     with open('tet_scen', 'r') as file:
        array = []
        for line in file:
-           if re.match(r'(\w)', line):
+           if re.match(r'(\w)', line): #The "\w" means "any word character" which usually means alphanumeric (letters, numbers, regardless of case) plus underscore (_)
                array.append(line)
     with open("temp.sh", "a+") as file:
         os.system("chmod 777 temp.sh")
@@ -67,7 +66,7 @@ def mainmethod():
     for i in range(0, 1):
         cmd = "/TETARUL/bin/tcc -p -e $PWD " + array[i]
         with open("temp.sh", 'w+') as file:
-            if re.match(r'\s\s+', cmd):
+            if re.match(r'\s\s+', cmd): #The "\S" means Matches nonwhitespace.
                 pass
             else:
                 file.write(cmd)
