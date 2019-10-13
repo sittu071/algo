@@ -1,0 +1,15 @@
+import smtplib
+
+with smtplib.SMTP('smtp.gmail.com',587) as smtp:
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.ehlo()
+
+    smtp.login("m@gmail.com","jowonflkzvdoxeug")
+
+    subject= "test mail"
+    body = "skjdhjhdsjhjsdhjhg"
+
+    msg = f'Subject:{subject}\n\n{body}'
+
+    smtp.sendmail("mausamsinha072@gmail.com", "mausamsinha072@gmail.com", msg)
