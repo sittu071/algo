@@ -1,0 +1,86 @@
+#ONP - Transform the Expression
+#stack
+#Transform the algebraic expression with brackets into RPN form (Reverse Polish Notation). Two-argument operators: +, -, *, /, ^ (priority from the lowest to the highest), brackets ( ). Operands: only letters: a,b,...,z. Assume that there is only one RPN form (no expressions like a*b*c).
+#Input
+#t [the number of expressions <= 100]
+#expression [length <= 400]
+#[other expressions]
+#Text grouped in [ ] does not appear in the input file.
+
+#Output
+#The expressions in RPN form, one per line.
+
+#Example
+#Input:
+#3
+#(a+(b*c))
+#((a+b)*(z+x))
+#((a+t)*((b+(a+c))^(c+d)))
+
+#Output:
+#abc*+
+#ab+zx+*
+#at+bac++cd+^*
+
+class Stack:
+    def __init__(self):
+        self.item = []
+
+    def push(self, ch):
+        self.item.append(ch)
+
+    def pop(self):
+        if Stack.isEmpty(self):
+            self.item.pop()
+
+    def isEmpty(self):
+        if len(self.item) == 0:
+            return 0
+        else:
+            return 1
+
+    def topofstack(self):
+        return self.item[-1]
+
+stack = Stack()
+
+prectable  = { "+" : 1,  "-" : 2,  "*" : 3,  "/" : 4,  "^" : 5, "(" : 6}
+
+def higherPrecedence(ch):
+    val = ""
+    while prectable[stack.topofstack()] < prectable[ch]:
+        val = val + stack.topofstack()
+        stack.pop()
+    stack.push(ch)
+
+    return val
+
+no_of_input = int(input("Enter the number Expression "))
+
+li = []
+for i in range(0,no_of_input):
+    li.append(input())
+
+for str in li:
+    var = ""
+    for ch in str:
+        if ch == "(":
+            stack.push(ch)
+        elif ch.isalpha():
+            var = var + ch
+        elif ch == "+" or ch == "-" \
+                or ch == "*" or ch == "/" \
+                or ch == "^":
+            var = var + higherPrecedence(ch)
+        elif ch == ")":
+            while stack.topofstack() != "(":
+                var = var + stack.topofstack()
+                stack.pop()
+            stack.pop()
+        else:
+            pass
+    print(var)
+
+
+
+
