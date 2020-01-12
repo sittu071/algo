@@ -21,7 +21,7 @@
 #abc*+
 #ab+zx+*
 #at+bac++cd+^*
-
+import logging
 class Stack:
     def __init__(self):
         self.item = []
@@ -44,21 +44,19 @@ class Stack:
 
 stack = Stack()
 
-prectable  = { "+" : 1,  "-" : 2,  "*" : 3,  "/" : 4,  "^" : 5, "(" : 6}
+prectable  = {"+": 1,  "-": 2,  "*": 3,  "/": 4,  "^": 5, "(": 6}
 
-def higherPrecedence(ch):
-    val = ""
-    while prectable[stack.topofstack()] < prectable[ch]:
-        val = val + stack.topofstack()
-        stack.pop()
-    stack.push(ch)
+def hashigherPrecedence(tos, ch):
+    if  prectable[ch] < prectable[tos]:
+        return 0
+    else:
+        return 1
 
-    return val
-
-no_of_input = int(input("Enter the number Expression "))
+no_of_input = int(input())
 
 li = []
-for i in range(0,no_of_input):
+output = []
+for i in range(0, no_of_input):
     li.append(input())
 
 for str in li:
@@ -71,7 +69,10 @@ for str in li:
         elif ch == "+" or ch == "-" \
                 or ch == "*" or ch == "/" \
                 or ch == "^":
-            var = var + higherPrecedence(ch)
+            while(stack.isEmpty() != 0 and hashigherPrecedence(stack.topofstack(),ch)):
+                var = var + stack.topofstack()
+                stack.pop()
+            stack.push(ch)
         elif ch == ")":
             while stack.topofstack() != "(":
                 var = var + stack.topofstack()
@@ -79,8 +80,11 @@ for str in li:
             stack.pop()
         else:
             pass
-    print(var)
+    while (stack.isEmpty() != 0):
+        var = var + stack.topofstack()
+        stack.pop()
+    output.append(var)
 
 
-
-
+for i in output:
+    print(i)
