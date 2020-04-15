@@ -1,0 +1,48 @@
+class Node(object):
+    def __init__(self, data, nextNode=None):
+        self.data = data
+        self.nextNode = nextNode
+
+    def getdata(self):
+        return self.data
+
+    def getnextNode(self):
+        return self.nextNode
+
+    def setnextNode(self, new_node):
+        self.nextNode = new_node
+
+
+class LinkList(object):
+    def __init__(self, head = None):
+        self.head = head
+
+    def insert(self, data):
+        new_node = Node(data)
+        new_node.nextNode = self.head
+        self.head = new_node
+
+    def size(self):
+        current = self.head
+        count = 0
+        while current:
+            count = count + 1
+            current = current.nextNode
+
+    def displayList(self):
+        current = self.head
+        count = 0
+        while current:
+            count = count + 1
+            print(current.data)
+            current = current.nextNode
+
+li = LinkList()
+li.insert(10)
+li.insert(20)
+li.insert(30)
+li.insert(40)
+li.insert(50)
+li.insert(60)
+
+li.displayList()
