@@ -21,6 +21,24 @@ class LinkList(object):
         new_node = Node(data)
         new_node.nextNode = self.head
         self.head = new_node
+# insert at last position
+        # def insert(self, data):
+    #     new_node = Node(data)
+    #     new_node.nextNode = None
+    # 
+    #     if self.head == None:
+    #         self.head = new_node
+    #     else:
+    #         temp = self.head
+    #         while temp.nextNode != None:
+    #             temp = temp.nextNode
+    #         temp.nextNode = new_node
+    # 
+    # def display(self):
+    #     current = self.head
+    #     while current:
+    #         print(current.data)
+    #         current = current.nextNode
 
     def size(self):
         current = self.head
