@@ -1,1 +1,2 @@
 pyinstaller --onefile a.py b.py c.py d.py e.py e.py
+pyinstaller --onefile Imatest_Reportgenerator.py ImageGenerator.py GlobalFunction.py TableCreator.py rename.py  sorting.py
