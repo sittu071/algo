@@ -1,0 +1,1 @@
+pyinstaller --onefile a.py b.py c.py d.py e.py e.py
